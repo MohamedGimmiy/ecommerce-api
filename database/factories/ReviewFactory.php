@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,12 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'customer' => fake()->name(),
+            'review' => fake()->paragraph(),
+            'star' => fake()->numberBetween(0,5),
+            'product_id' => function (){
+                return Product::all()->random();
+            }
         ];
     }
 }
