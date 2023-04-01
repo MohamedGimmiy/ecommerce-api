@@ -6,6 +6,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\ProductCollection;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        return  ProductCollection::collection(Product::all());
     }
 
     /**
